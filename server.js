@@ -15,15 +15,15 @@ app.get('/article-one',function(req,res)
 });
 app.get('/article-two',function(req,res)
 {
-   res.send('this is Second article'); 
+   res.sendFile(path.join(__dirname, 'ui', 'article-two.html')); 
 });
 app.get('/article-three',function(req,res)
 {
-   res.send('this is Third article'); 
+   res.sendFile(path.join(__dirname, 'ui', 'article-thre.html'));  
 });
 app.get('/article-four',function(req,res)
 {
-   res.send('this is fourth article'); 
+   res.sendFile(path.join(__dirname, 'ui', 'article-four.html')); 
 });
 
 
