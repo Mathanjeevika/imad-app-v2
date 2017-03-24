@@ -8,13 +8,42 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var articleOne={
-    title:"This Is Article One From MathanKumar",
-    heading:"Article One",
-    date:"24/03/2017",
-    content:` <p>
-                    This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
-                </p>`
+var articles ={
+    'article-one':{
+        title:"This Is Article One From MathanKumar",
+        heading:"Article One",
+        date:"24/03/2017",
+        content:` <p>
+                        This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                    </p>`
+    },
+    'article-two':{
+        title:"This Is Article Two From MathanKumar",
+        heading:"Article Two",
+        date:"24/01/2017",
+        content:` <p>
+                        This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                    </p>`
+    
+    },
+    'article-three':{
+        title:"This Is Article Three From MathanKumar",
+        heading:"Article Three",
+        date:"24/02/2017",
+        content:` <p>
+                        This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                    </p>`
+    
+    },
+    'article-four':{
+        title:"This Is Article Four From MathanKumar",
+        heading:"Article Four",
+        date:"25/03/2017",
+        content:` <p>
+                        This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                    </p>`
+    
+    }
 };
 function createTemplate(data){
         var title=data.title;
@@ -53,20 +82,9 @@ function createTemplate(data){
         `;
         return htmlTemplate;
 }
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
-app.get('/article-four', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-four.html'));
+app.get('/:articleName', function (req, res) {
+    var articleName=req.parans.articleName;
+  res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
