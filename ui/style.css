@@ -23,6 +23,9 @@ body {
     max-width:800px;
     margin:0 auto;
     color:blue;
+    padding-top:100px;
+    padding-left:150px;
+    padding-right:100px;
     font-family:sans-serif;
 }
 
