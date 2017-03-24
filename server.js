@@ -4,6 +4,63 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var content={
+    title:"Article-one i am mathan kumar",
+    heading:"article one",
+    date:"24/03/2017",
+    content:`
+    <p>
+                    This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                </p>`
+    
+};
+
+function createtemplate(data){
+    var title =data.title;
+    var heading=data.heading;
+    var date = data.date;
+    var content = data.content;
+
+            var htmlTemplate=`
+                <html>
+               
+                    <head>
+                        <title>
+                             $[title]
+                        </title>
+                        <style>
+                            .conatiner{
+                                 max-width:800px;
+                                 margin:0 auto;
+                                 color:blue;
+                                 font-family:sans-serif;
+                             } 
+                        </style>
+                     </head>
+                     <body>
+                        <div class="container" >
+                            <div>
+                                123
+                            </div>
+                            <hr/>
+                            <div>
+                                $[heading]
+                            </div>
+                            <div>
+                                $[date]
+                            </div>
+                            <div>
+                                $[content]
+                            </div>
+                        </div>
+                    </body>
+                </html>
+                 ;
+                return htmlTemplate;
+};
+        `
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -11,7 +68,7 @@ app.get('/', function (req, res) {
 
 app.get('/article-one',function(req,res)
 {
-   res.sendFile(path.join(__dirname, 'ui', 'article-one.html')); 
+   res.send(createtemplate(articleone)) ;
 });
 app.get('/article-two',function(req,res)
 {
