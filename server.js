@@ -1,29 +1,24 @@
-var express =require('express');
-var morgan =require('morgan');
+var express = require('express');
+var morgan = require('morgan');
 var path = require('path');
 
-var app =express();
+var app = express();
 app.use(morgan('combined'));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
 
+app.get('/ui/style.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+});
 
-app.get('/',function(req,res) {
-    res.sendFile(path,join(_dirname,'ui','index.html'));
+app.get('/ui/madi.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
 
-
-app.get('/ui/styleclass',function(req,res) {
-    res.sendFile(path,join(_dirname,'ui','styleclass.css'));
-});
-
-app.get('/ui/modi.png',function(req,res) {
-    res.sendFile(path,join(_dirname,'ui','modi.png'));
-});
-
-
-var port =8080;
-
-app.listion(8080,function() {
-  console.log('Imad cource app is listening on port $[port]!');
+var port = 8080; // Use 8080 for local development because you might already have apache running on 80
+app.listen(8080, function () {
+  console.log(`IMAD course app listening on port ${port}!`);
 });
