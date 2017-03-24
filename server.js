@@ -8,7 +8,46 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var articleOne={
+    title:"This Is Article One From MathanKumar",
+    heading:"Article One",
+    date:"24/03/2017",
+    content:` <p>
+                    This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article This is the content of the article
+                </p>`
+};
 
+var htmlTemplate =`
+<html>
+    
+    <head>
+      <title>
+          ${title}
+      </title> 
+      <meta name ="viewport" content ="width-device-width,initial-scale=1">
+      <link href="/ui/style.css" rel="stylrsheet" />
+    </head>
+    <body>
+       <div class="container" >
+            <div>
+                Home
+            </div>
+            <hr/>
+            <div>
+                ${heading}
+            </div>
+            <div>
+                ${date}             
+            </div>
+            <div>
+                ${content};
+            </div>
+        </div>
+    </body>
+</html>
+
+
+`;
 
 app.get('/article-one', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
